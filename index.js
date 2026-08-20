@@ -7,6 +7,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Root route (Fixes "Cannot GET /")
+app.get('/', (req, res) => {
+  res.send('Backend API is running');
+});
+
+// Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'Backend running smoothly' });
 });
